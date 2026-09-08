@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Iconic Dental design tokens (effective 2026 teal palette)          */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-teal: #00534c; /* primary */
+  --color-teal2: #0b8f7d; /* accent 2 */
+  --color-aqua: #74c1b4; /* accent / highlight */
+  --color-ink: #083b36; /* deep ink */
+  --color-deep: #003f3a; /* darkest teal */
+  --color-paper: #f7fdfd; /* page background */
+  --color-mint: #dcefeb; /* soft mint */
+  --color-slate: #3f5d59; /* muted body text */
+  --color-line: rgba(0, 83, 76, 0.16);
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 24px 60px -32px rgba(0, 83, 76, 0.45);
+  --shadow-card-hover: 0 24px 55px -34px rgba(0, 83, 76, 0.65);
+}
+
+/* Reusable brand gradients as background utilities */
+@utility grad-card-light {
+  background-image: linear-gradient(145deg, #f7fdfd 0%, #e1f2ef 54%, #b8ded8 100%);
+}
+@utility grad-card-teal {
+  background-image: linear-gradient(180deg, #10977f 0%, #087b6e 48%, #00534c 100%);
+}
+@utility grad-stat-pale {
+  background-image: linear-gradient(115deg, #f7fdfd 0%, #e8f6f4 42%, #c5e7e2 100%);
+}
+@utility grad-marquee {
+  background-image: linear-gradient(115deg, #f7fdfd 0%, #e5f4f1 46%, #c5e7e2 100%);
+}
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-teal);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Shared eyebrow label (mono-ish uppercase kicker with leading rule) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-aqua);
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+}
+.eyebrow.no-rule::before {
+  display: none;
+}
+
+/* Accent word inside headings */
+.accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-aqua);
+}
+
+/* Utility: prevent long-word overflow on small screens */
+.balance {
+  text-wrap: balance;
+}
+
+/* Print: utility form pages print only their form/content */
+@media print {
+  body > header,
+  body > footer {
+    display: none !important;
+  }
+}

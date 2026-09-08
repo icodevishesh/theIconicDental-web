@@ -1,0 +1,11 @@
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-REGULAR.OTF") format("opentype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-ITALIC.OTF") format("opentype");font-style:italic;font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-MEDIUM.OTF") format("opentype");font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-MEDIUMITALIC.OTF") format("opentype");font-style:italic;font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-SEMIBOLD.OTF") format("opentype");font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-SEMIBOLDITALIC.OTF") format("opentype");font-style:italic;font-weight:600;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-BOLD.OTF") format("opentype");font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:"Poppins";src:url("POPPINS/POPPINS-BOLDITALIC.OTF") format("opentype");font-style:italic;font-weight:700;font-display:swap}
+:root{--display:"Poppins",sans-serif!important;--body:"Poppins",sans-serif!important;--mono:"Poppins",sans-serif!important}
+html body,button,input,textarea,select{font-family:"Poppins",sans-serif!important}
+h1,h2,h3,h4,h5,h6,.eyebrow,.crumb,.tag,.cat,.learn,.btn{font-family:"Poppins",sans-serif!important}
