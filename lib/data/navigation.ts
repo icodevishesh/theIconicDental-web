@@ -63,3 +63,9 @@ export const contact = {
   email: "info@theiconicdental.com",
   address: "17131-53 Ave NW, Edmonton, AB T5T 2K1",
 };
+
+export const socialLinks = {
+  facebook: "https://www.facebook.com/iconicdentaldesigns",
+  instagram: "https://www.instagram.com/iconicdentaldesigns",
+  linkedin: "https://www.linkedin.com/company/iconic-dental-designs-centre/",
+};

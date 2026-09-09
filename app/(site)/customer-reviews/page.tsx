@@ -176,17 +176,23 @@ export default async function CustomerReviewsPage() {
       )}
 
       {/* Trust */}
-      <section className="bg-paper py-[74px]">
-        <div className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 sm:pt-0 lg:grid-cols-4">
-          {trust.map((t) => (
-            <div
-              key={t.label}
-              className="w-[70%] min-w-[200px] max-w-[240px] shrink-0 snap-start rounded-[18px] border border-line bg-[linear-gradient(145deg,#f7fdfd,#c5e7e2)] p-[27px] sm:w-auto sm:min-w-0 sm:max-w-none sm:shrink"
-            >
-              <b className="block text-[2.2rem] font-semibold leading-tight text-teal">{t.value}</b>
-              <span className="text-[.82rem] text-[#315f5a]">{t.label}</span>
-            </div>
-          ))}
+      <section className="bg-paper py-10 sm:py-12 md:py-16 lg:py-[72px]">
+        <div className="mx-auto max-w-[1200px] 2xl:max-w-[1440px] px-4 sm:px-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:grid-cols-4 lg:gap-6">
+            {trust.map((t) => (
+              <div
+                key={t.label}
+                className="rounded-2xl border border-line bg-[linear-gradient(145deg,#f7fdfd,#c5e7e2)] p-3.5 sm:p-5 md:p-6 lg:p-[27px] transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <b className="block text-xl sm:text-2xl md:text-[1.85rem] lg:text-[2.2rem] font-semibold leading-tight text-teal">
+                  {t.value}
+                </b>
+                <span className="mt-1 block text-[.74rem] sm:text-[.8rem] md:text-[.84rem] lg:text-[.88rem] leading-snug text-[#315f5a]">
+                  {t.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

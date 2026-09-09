@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { contact } from "@/lib/data/navigation";
+import { contact, socialLinks } from "@/lib/data/navigation";
 import logo from "@/public/logo.png";
 import { Building, House, Mail, Phone, Warehouse } from "lucide-react";
 
@@ -35,13 +35,32 @@ const columns = [
 const socials = [
   {
     label: "Facebook",
-    href: "#",
-    path: "M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8c0-.6.4-1 1-1Z",
+    href: socialLinks.facebook,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8c0-.6.4-1 1-1Z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Instagram",
+    href: socialLinks.instagram,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    ),
   },
   {
     label: "LinkedIn",
-    href: "#",
-    path: "M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.9 1.6-1.5 2.8-1.5 2.3 0 3.2 1.5 3.2 4V19h-3v-4.5c0-1.1-.4-1.9-1.4-1.9s-1.6.8-1.6 1.9V19h-3v-9Z",
+    href: socialLinks.linkedin,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.9 1.6-1.5 2.8-1.5 2.3 0 3.2 1.5 3.2 4V19h-3v-4.5c0-1.1-.4-1.9-1.4-1.9s-1.6.8-1.6 1.9V19h-3v-9Z" />
+      </svg>
+    ),
   },
 ];
 
@@ -69,24 +88,13 @@ export function Footer() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="grid h-[38px] w-[38px] place-items-center rounded-full border border-teal/30 text-teal transition-colors hover:border-teal hover:bg-teal hover:text-paper"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d={s.path} />
-                  </svg>
+                  {s.icon}
                 </a>
               ))}
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="grid h-[38px] w-[38px] place-items-center rounded-full border border-teal/30 text-teal transition-colors hover:border-teal hover:bg-teal hover:text-paper"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                </svg>
-              </a>
             </div>
           </div>
 
