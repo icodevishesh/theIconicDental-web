@@ -54,9 +54,10 @@ def get_mongodb_connection():
         print("Successfully connected to MongoDB")
         
         # Get database and collection
-        db = client["iconic"]
+        db_name = os.getenv("DB_NAME", "iconic")
+        db = client[db_name]
         contact_collection = db["contact"]
-        print("Successfully accessed database and collection")
+        print(f"Successfully accessed database '{db_name}' and collection 'contact'")
         
         return client, contact_collection
         
