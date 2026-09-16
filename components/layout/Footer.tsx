@@ -27,7 +27,7 @@ const columns = [
         href: "https://connectapp.theiconicdental.com/auth/sign-in",
         target: "_blank",
       },
-      { label: "Quick Links", href: "/#faq" },
+      { label: "Contact Us", href: "/contact-us" },
     ],
   },
 ];
@@ -165,6 +165,7 @@ export function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-4 pt-[26px] text-[.78rem] tracking-[0.03em]">
           <span>© 2026 Iconic Dental Designs — All rights reserved.</span>
           <span>Designing smiles daily.</span>
+          <Link className="hover:text-teal2" href="/privacy-policy">Privacy & Policy</Link>
         </div>
       </div>
     </footer>
