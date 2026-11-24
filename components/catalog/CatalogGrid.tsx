@@ -7,7 +7,21 @@ import type { ProductCategory } from "@/lib/types";
 
 type Filter = "all" | ProductCategory;
 
-export function CatalogGrid() {
+interface CatalogGridProps {
+  /** Base path product cards link to (default "/products"). */
+  hrefBase?: string;
+  eyebrow?: string;
+  title?: string;
+  /** Unit label shown next to the count (e.g. "products", "milling services"). */
+  countLabel?: string;
+}
+
+export function CatalogGrid({
+  hrefBase = "/products",
+  eyebrow = "Product range",
+  title = "Designed for every case.",
+  countLabel = "products",
+}: CatalogGridProps = {}) {
   const [filter, setFilter] = useState<Filter>("all");
 
   const visible = useMemo(
@@ -19,13 +33,13 @@ export function CatalogGrid() {
     <>
       <div className="mb-[34px] flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <div>
-          <span className="eyebrow text-teal2">Product range</span>
+          <span className="eyebrow text-teal2">{eyebrow}</span>
           <h2 className="mt-2.5 text-[clamp(2rem,4vw,3.4rem)] font-medium leading-[1.1] tracking-tight text-teal">
-            Designed for every case.
+            {title}
           </h2>
         </div>
         <div className="text-[.7rem] uppercase tracking-[0.12em] text-teal">
-          {visible.length} products
+          {visible.length} {countLabel}
         </div>
       </div>
 
@@ -61,6 +75,7 @@ export function CatalogGrid() {
           <ProductCard
             key={p.slug}
             product={p}
+            hrefBase={hrefBase}
             className={
               visible.length > 3
                 ? "w-[80%] min-w-[250px] max-w-[280px] shrink-0 snap-start sm:w-auto sm:min-w-0 sm:max-w-none sm:shrink"

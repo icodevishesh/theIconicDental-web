@@ -15,14 +15,21 @@ export const offerings = [
     features: ["30+ trained designers", "Next day, 6-hour, or 2-hour turnaround", "Under 2% redesign rate"],
     cta: "Explore Design Services",
     href: "/design-services",
+    /** Where the whole card navigates when clicked (button href may differ). */
+    cardHref: "/design-services",
   },
   {
-    tag: "Full-Service Lab",
-    title: "Dental Lab Services",
-    sub: "Finished restorations built to your spec",
-    features: ["FDA-approved materials", "48-hour manufacturing", "ISO 13485 & HIPAA compliant"],
-    cta: "Explore all products",
-    href: "/dental-lab-services",
+    tag: "For Dental Labs Only",
+    title: "Dental Milling Services",
+    sub: "One milling partner. Multiple milling solutions.",
+    features: [
+      "Precision 5-axis milling, ready to finish",
+      "27 services: crown, implant & removables",
+      "Lab-only program — your clients stay yours",
+    ],
+    cta: "Explore Milling Services",
+    href: "/dental-milling-services#partner",
+    cardHref: "/dental-milling-services",
   },
 ];
 

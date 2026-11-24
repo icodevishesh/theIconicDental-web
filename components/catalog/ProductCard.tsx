@@ -2,10 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import type { LabProduct } from "@/lib/types";
 
-export function ProductCard({ product, className = "" }: { product: LabProduct; className?: string }) {
+export function ProductCard({
+  product,
+  className = "",
+  hrefBase = "/products",
+}: {
+  product: LabProduct;
+  className?: string;
+  hrefBase?: string;
+}) {
   return (
     <Link
-      href={`/products/${product.slug}`}
+      href={`${hrefBase}/${product.slug}`}
       className={`group grad-card-teal flex flex-col overflow-hidden rounded-[20px] border border-white/25 text-paper transition-all duration-300 hover:-translate-y-1.5 hover:border-aqua hover:shadow-[var(--shadow-card-hover)] ${className}`}
     >
       <div className="relative h-[230px] overflow-hidden border-b border-white/20 bg-[linear-gradient(180deg,#18a88e_0%,#0b8b79_48%,#00675d_100%)] sm:h-[260px]">

@@ -12,6 +12,16 @@ const labSubmenu: NavLink[] = [
   { label: "Printed Models & Dies", href: "/products/printed-models-dies" },
 ];
 
+/** Milling links surfaced in the "Dental Milling" submenu (dental labs only). */
+const millingSubmenu: NavLink[] = [
+  { label: "Explore milling services", href: "/dental-milling-services" },
+  { label: "Become a milling partner", href: "https://connect.fynback.com/", openInNewTab: true },
+  { label: "Zirconia Crowns", href: "/dental-milling-services/zirconia-crowns" },
+  { label: "Full Contour Zirconia", href: "/dental-milling-services/full-contour-zirconia" },
+  { label: "Screw Retained Zirconia Bridge", href: "/dental-milling-services/screw-retained-zirconia-bridge" },
+  { label: "Titanium Custom Abutments", href: "/dental-milling-services/titanium-custom-abutments" },
+];
+
 const designSubmenu: NavLink[] = [
   { label: "Fixed Prosthesis", href: "/services/fixed-prosthesis" },
   { label: "Digital Dentures", href: "/services/digital-dentures" },
@@ -28,6 +38,7 @@ export const navItems: NavItem[] = [
     groups: [
       { label: "Design Services", href: "/design-services", children: designSubmenu },
       { label: "Dental Lab", href: "/dental-lab-services", children: labSubmenu },
+      { label: "Dental Milling", href: "/dental-milling-services", children: millingSubmenu },
     ],
   },
   {

@@ -88,3 +88,22 @@ export function productFaqs(p: LabProduct): { q: string; a: string }[] {
     [`What is the turnaround time for ${t}?`, `Turnaround varies with product type, quantity and case complexity. Production timing is confirmed after the submitted scans, bite and prescription pass the initial record review.`],
   ].map(([q, a]) => ({ q, a }));
 }
+
+/** Lab-facing milling FAQs (mirrors the original lab-product-shell.js logic). */
+export function millingFaqs(p: LabProduct): { q: string; a: string }[] {
+  const name = p.title;
+  const base: [string, string][] = [
+    [`Who can order ${name} milling?`, `Our milling service is offered exclusively to dental laboratories through the Iconic milling partner program. Dentists and clinics should continue to work through their own lab; we do not accept direct clinical orders for milling.`],
+    [`What files do you need to mill ${name}?`, `Send the finished design as an open STL (or other accepted CAD output) together with the material, shade and any sintering, crystallization or finishing instructions. Designs from exocad, 3Shape and other open CAD systems are accepted.`],
+    [`Which materials can ${name} be milled in?`, `Material options depend on the indication. Note your preferred material and brand on the order and we will confirm availability and any design minimums, such as wall thickness or connector size, before milling starts.`],
+    [`What is the milling turnaround for ${name}?`, `Most units ship back to your lab within 48 hours of an approved file. Full-arch, implant and high-volume batches may need longer; the confirmed ship date is sent as soon as the file is accepted.`],
+    [`How does my lab become a milling partner?`, `One partner covers your zirconia, e.max, PMMA, wax and titanium milling. Contact us with your lab details, expected monthly volume, materials and CAD software. We set up your partner account, confirm pricing and run your first milled units so you can check fit before scaling up.`],
+  ];
+  if (p.cat === "implant") {
+    base.splice(3, 0, [
+      `Which implant systems can you mill ${name} for?`,
+      `We mill for many major implant systems. Include the exact manufacturer, platform, connection and Ti-base or component details with every file so compatibility can be confirmed before milling.`,
+    ]);
+  }
+  return base.map(([q, a]) => ({ q, a }));
+}

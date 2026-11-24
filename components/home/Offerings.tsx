@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { offerings } from "@/lib/data/home";
@@ -11,6 +14,8 @@ const Check = () => (
 );
 
 export function Offerings() {
+  const router = useRouter();
+
   return (
     <section id="services" className="bg-paper py-[70px] md:py-24">
       <div className="mx-auto max-w-[1200px] px-6">
@@ -26,34 +31,50 @@ export function Offerings() {
         />
 
         <div className="grid gap-6 md:grid-cols-2">
-          {offerings.map((o) => (
-            <div
-              key={o.title}
-              className="grad-card-teal flex flex-col overflow-hidden rounded-3xl text-paper shadow-[var(--shadow-card)] transition-transform duration-500 hover:-translate-y-2 md:aspect-[1/0.8]"
-            >
-              <div className="flex h-full flex-col p-[34px]">
-                <span className="eyebrow text-[#c9ebe5]">{o.tag}</span>
-                {/* Full-bleed pale title panel */}
-                <h3 className="grad-stat-pale -mx-[34px] my-5 px-[34px] py-5 text-center text-[clamp(1.9rem,3vw,2.5rem)] font-medium leading-[1.05] tracking-tight text-teal">
-                  {o.title}
-                </h3>
-                <p className="mb-6 max-w-[40ch] text-[1.02rem] text-white/85">{o.sub}</p>
-                <ul className="mb-8 grid gap-3.5">
-                  {o.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-[.97rem] text-white/90">
-                      <Check />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto flex w-full justify-center">
-                  <Button href={o.href} className="border border-aqua bg-teal text-white hover:bg-deep">
-                    {o.cta}
-                  </Button>
+          {offerings.map((o) => {
+            // The whole card acts as a link to cardHref, while preserving its inner CTA
+            // (which may point elsewhere, e.g. an external partner portal).
+            const open = () => router.push(o.cardHref);
+            return (
+              <div
+                key={o.title}
+                role="link"
+                tabIndex={0}
+                onClick={(e) => {
+                  if (!(e.target as HTMLElement).closest("a")) open();
+                }}
+                onKeyDown={(e) => {
+                  if ((e.key === "Enter" || e.key === " ") && !(e.target as HTMLElement).closest("a")) {
+                    e.preventDefault();
+                    open();
+                  }
+                }}
+                className="grad-card-teal flex cursor-pointer flex-col overflow-hidden rounded-3xl text-paper shadow-[var(--shadow-card)] transition-transform duration-500 hover:-translate-y-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-aqua md:aspect-[1/0.8]"
+              >
+                <div className="flex h-full flex-col p-[34px]">
+                  <span className="eyebrow text-[#c9ebe5]">{o.tag}</span>
+                  {/* Full-bleed pale title panel */}
+                  <h3 className="grad-stat-pale -mx-[34px] my-5 px-[34px] py-5 text-center text-[clamp(1.9rem,3vw,2.5rem)] font-medium leading-[1.05] tracking-tight text-teal">
+                    {o.title}
+                  </h3>
+                  <p className="mb-6 max-w-[40ch] text-[1.02rem] text-white/85">{o.sub}</p>
+                  <ul className="mb-8 grid gap-3.5">
+                    {o.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-[.97rem] text-white/90">
+                        <Check />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto flex w-full justify-center">
+                    <Button href={o.href} className="border border-aqua bg-teal text-white hover:bg-deep">
+                      {o.cta}
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
